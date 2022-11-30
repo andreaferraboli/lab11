@@ -40,9 +40,14 @@ int carica(char *nf, testo *txt) {
     printf("n_righe=%d \n",n_righe);
     if (n_righe <= 0)
         return -2;
-    char **f = (char **) malloc(sizeof(BUFSIZ) * n_righe);
-    for (i = 0; i <= n_righe; ++i) {
-        fscanf(fp, "%s", f[i]);
+    char **f = (char **) malloc(BUFSIZ * n_righe);
+    char *res;
+    for (i = 0; i < n_righe; ++i) {
+//        fscanf(fp, "%s", f[i]);
+        fgets(res, BUFSIZ, fp);
+        if( res==NULL )
+            break;
+        printf("%s",f[i]);
     }
     txt->f = f;
     txt->n = n_righe;
